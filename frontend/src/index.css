@@ -1,0 +1,761 @@
+/* ===== 기본 ===== */
+:root {
+  --paper: #f6f4ee;
+  --card: #fffdf8;
+  --ink: #23282e;
+  --ink-soft: #5b6169;
+  --ink-faint: #8a9099;
+  --line: #e3ded2;
+  --line-strong: #cfc8b8;
+  --accent: #1f4e3d; /* 짙은 초록 — 리서치 노트 느낌 */
+  --accent-soft: #e7efe9;
+  --danger: #a3342b;
+  --danger-soft: #f7e9e7;
+
+  --badge-kr: #14549c;
+  --badge-kr-bg: #e6eef8;
+  --badge-us: #1e6f42;
+  --badge-us-bg: #e5f2ea;
+  --badge-jp: #a83232;
+  --badge-jp-bg: #f8e9e9;
+  --badge-cn: #9a5b0f;
+  --badge-cn-bg: #f7eedd;
+  --badge-global: #4e5560;
+  --badge-global-bg: #eceef1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== 헤더 / 탭 ===== */
+.app-header {
+  background: var(--card);
+  border-bottom: 1px solid var(--line-strong);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.app-header-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.app-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 0;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.app-brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.app-tabs {
+  display: flex;
+  gap: 4px;
+  align-self: stretch;
+}
+
+.app-tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+}
+
+.app-tab:hover {
+  color: var(--ink);
+}
+
+.app-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ===== 본문 레이아웃 ===== */
+.app-main {
+  flex: 1;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 28px 20px 56px;
+}
+
+.app-footer {
+  border-top: 1px solid var(--line);
+  padding: 16px 20px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+.app-footer p {
+  margin: 0;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* ===== 목록 페이지 ===== */
+.list-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.list-count {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+.report-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.report-card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 20px;
+  text-decoration: none;
+  color: var(--ink);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.report-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 10px rgba(35, 40, 46, 0.07);
+}
+
+.report-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.report-title {
+  margin: 0 0 6px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.report-period {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.report-created {
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 리포트 타입 배지 */
+.type-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.type-daily {
+  background: var(--badge-global-bg);
+  color: var(--badge-global);
+}
+
+.type-weekly {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.type-monthly {
+  background: var(--badge-kr-bg);
+  color: var(--badge-kr);
+}
+
+/* ===== 버튼 ===== */
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 9px 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #17402f;
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: var(--card);
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+}
+
+.btn-secondary:hover {
+  background: var(--paper);
+}
+
+/* ===== 생성 패널 ===== */
+.generate-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gen-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  max-width: 420px;
+}
+
+.gen-running {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.gen-done {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.gen-error {
+  background: var(--danger-soft);
+  color: var(--danger);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.gen-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* ===== 스피너 ===== */
+.spinner-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 56px 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--line);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== 안내 / 에러 ===== */
+.notice {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 32px 24px;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.notice strong {
+  display: block;
+  color: var(--ink);
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.notice p {
+  margin: 0 0 14px;
+}
+
+.notice-error {
+  border-color: #e4c9c5;
+  background: #fdf8f6;
+}
+
+.notice-error strong {
+  color: var(--danger);
+}
+
+.notice-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.notice-empty p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== 상세 페이지 ===== */
+.detail-back {
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+.detail-back a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.detail-back a:hover {
+  text-decoration: underline;
+}
+
+.detail-header {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 18px;
+  margin-bottom: 24px;
+}
+
+.detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.detail-title {
+  margin: 0 0 8px;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+
+/* ===== 마크다운 본문 ===== */
+.markdown-body {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 28px 32px;
+  overflow-wrap: break-word;
+}
+
+.markdown-body > :first-child {
+  margin-top: 0;
+}
+
+.markdown-body > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4 {
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  margin: 1.6em 0 0.6em;
+}
+
+.markdown-body h1 {
+  font-size: 22px;
+}
+
+.markdown-body h2 {
+  font-size: 19px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
+}
+
+.markdown-body h3 {
+  font-size: 17px;
+}
+
+.markdown-body p,
+.markdown-body li {
+  color: #33383f;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 1.4em;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 2px 16px;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 6px 6px 0;
+  color: var(--ink-soft);
+}
+
+.markdown-body code {
+  background: #efece3;
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 0.9em;
+}
+
+.markdown-body pre {
+  background: #2b2f33;
+  color: #eceae4;
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+}
+
+.markdown-body pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+  font-size: 14.5px;
+}
+
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid var(--line-strong);
+  padding: 6px 10px;
+  text-align: left;
+}
+
+.markdown-body th {
+  background: var(--paper);
+}
+
+.markdown-body hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 1.8em 0;
+}
+
+/* ===== 종목 추천 ===== */
+.reco {
+  margin-top: 36px;
+}
+
+.reco-heading {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 4px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.reco-section {
+  margin-top: 24px;
+}
+
+.reco-criterion {
+  margin: 0 0 4px;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.reco-description {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.reco-empty {
+  font-size: 14px;
+  color: var(--ink-faint);
+}
+
+.reco-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+
+.reco-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reco-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.reco-name-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.reco-name {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.reco-ticker {
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.reco-sector {
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1px 7px;
+}
+
+.reco-rationale {
+  margin: 0;
+  font-size: 14px;
+  color: #33383f;
+}
+
+.reco-metrics {
+  margin: 2px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.reco-metric {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 3px 8px;
+  font-size: 12.5px;
+}
+
+.reco-metric dt {
+  color: var(--ink-faint);
+  font-weight: 600;
+}
+
+.reco-metric dd {
+  margin: 0;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 시장 배지 */
+.market-badge {
+  display: inline-block;
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.market-kr {
+  background: var(--badge-kr-bg);
+  color: var(--badge-kr);
+}
+
+.market-us {
+  background: var(--badge-us-bg);
+  color: var(--badge-us);
+}
+
+.market-jp {
+  background: var(--badge-jp-bg);
+  color: var(--badge-jp);
+}
+
+.market-cn {
+  background: var(--badge-cn-bg);
+  color: var(--badge-cn);
+}
+
+.market-global {
+  background: var(--badge-global-bg);
+  color: var(--badge-global);
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 640px) {
+  .app-header-inner {
+    padding: 0 14px;
+  }
+
+  .app-brand {
+    padding: 12px 0 6px;
+  }
+
+  .app-tabs {
+    width: 100%;
+  }
+
+  .app-tab {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .app-main {
+    padding: 20px 14px 44px;
+  }
+
+  .list-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .generate-panel {
+    justify-content: flex-end;
+  }
+
+  .markdown-body {
+    padding: 20px 16px;
+  }
+
+  .detail-title {
+    font-size: 22px;
+  }
+
+  .reco-grid {
+    grid-template-columns: 1fr;
+  }
+}
