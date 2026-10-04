@@ -6,8 +6,14 @@
   "items": {
     "type": "object",
     "properties": {
-      "criterion": { "type": "string", "description": "추천 기준 이름 (한국어)" },
-      "description": { "type": "string", "description": "기준 설명 (한국어)" },
+      "criterion": {
+        "type": "string",
+        "description": "추천 기준 이름 (한국어)"
+      },
+      "description": {
+        "type": "string",
+        "description": "기준 설명 (한국어)"
+      },
       "items": {
         "type": "array",
         "minItems": 3,
@@ -15,23 +21,86 @@
         "items": {
           "type": "object",
           "properties": {
-            "ticker": { "type": "string", "description": "티커. 예: \"005930.KS\", \"AAPL\", \"7203.T\"" },
-            "name": { "type": "string", "description": "종목명" },
-            "market": { "type": "string", "enum": ["KR", "US", "JP", "CN", "GLOBAL"] },
-            "sector": { "type": "string", "description": "섹터. 예: \"반도체\", \"자동차\"" },
-            "rationale": { "type": "string", "description": "추천 근거 (한국어)" },
+            "ticker": {
+              "type": "string",
+              "description": "티커. 예: \"005930.KS\", \"AAPL\", \"7203.T\""
+            },
+            "name": {
+              "type": "string",
+              "description": "종목명"
+            },
+            "market": {
+              "type": "string",
+              "enum": [
+                "KR",
+                "US",
+                "JP",
+                "CN",
+                "GLOBAL"
+              ]
+            },
+            "sector": {
+              "type": "string",
+              "description": "섹터. 예: \"반도체\", \"자동차\""
+            },
+            "rationale": {
+              "type": "string",
+              "description": "추천 근거 (한국어)"
+            },
             "metrics": {
               "type": "object",
               "description": "주요 지표. 예: {\"PER\": \"8.2\", \"매출 성장률(3Y CAGR)\": \"12%\"}",
-              "additionalProperties": { "type": "string" }
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "thesis": {
+              "type": "string",
+              "description": "한두 문장의 핵심 투자 포인트 (한국어)"
+            },
+            "catalysts": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "성장 동인·카탈리스트 2~3개 (한국어)"
+            },
+            "risks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "리스크 2~3개 (한국어)"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "신규",
+                "유지"
+              ],
+              "description": "전주 대비 편입 상태"
             }
           },
-          "required": ["ticker", "name", "market", "sector", "rationale"],
+          "required": [
+            "ticker",
+            "name",
+            "market",
+            "sector",
+            "rationale",
+            "thesis",
+            "catalysts",
+            "risks",
+            "status"
+          ],
           "additionalProperties": false
         }
       }
     },
-    "required": ["criterion", "description", "items"],
+    "required": [
+      "criterion",
+      "description",
+      "items"
+    ],
     "additionalProperties": false
   }
 }

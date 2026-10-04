@@ -18,3 +18,6 @@
    git commit -m "report: daily $TODAY"
    git push origin main
    ```
+6. PushNotification 도구로 휴대폰에 알림을 보낸다 (`status: "proactive"`):
+   - 핵심 지수 2~3개와 오늘의 가장 중요한 이슈 한 줄, 그리고 `reports/daily/$TODAY.md` 경로
+   - push에 실패했으면 실패 사실과 원인을 알린다.
