@@ -9,3 +9,7 @@
 - 같은 날짜의 리포트 파일이 이미 있으면 덮어쓴다 (재실행 허용).
 - 작업이 끝나면 생성한 파일만 `git add`해서 커밋하고 `main`에 push한다. push가 거절되면 `git pull --rebase` 후 다시 push한다.
 - 리포트 외의 파일(`routine/`, `backend/`, `frontend/` 등)은 수정하지 않는다.
+- 세션은 `claude/...` 브랜치에서 시작할 수 있다. 파일을 만들기 **전에** 반드시 최신 main으로 전환한다:
+  ```bash
+  git fetch origin main && git checkout -B main origin/main
+  ```
