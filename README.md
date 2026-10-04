@@ -40,3 +40,17 @@ npm run dev
 - 수동 트리거: `POST /api/reports/generate`
 
 API 상세는 [docs/API.md](docs/API.md) 참고.
+
+## Claude Routine으로 실행
+
+백엔드 서버 없이 Claude routine(클라우드 예약 에이전트)으로 같은 리포트를 생성한다. 결과는 `reports/`에 커밋된다.
+
+| Routine | 스케줄 (KST) | 프롬프트 |
+|---|---|---|
+| daily | 매일 06:00 | `routine/daily.md를 읽고 그대로 수행해.` |
+| weekly | 매주 일요일 07:00 | `routine/weekly.md를 읽고 그대로 수행해.` |
+
+- `routine/CONTEXT.md`: 공통 시스템 프롬프트 (대상 독자, 작성 규칙)
+- `routine/daily.md`, `routine/weekly.md`: 리포트별 절차 (weekly에 4가지 기준 종목 스크리닝 포함)
+- `routine/recommendations.schema.json`: 추천 종목 JSON 형식 (`RecommendationSection[]`)
+- 산출물: `reports/daily/YYYY-MM-DD.md`, `reports/weekly/YYYY-MM-DD.{md,json}`

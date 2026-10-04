@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RecommendationSection[]",
+  "description": "backend/src/types.ts의 RecommendationSection[]과 동일한 형식",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "criterion": { "type": "string", "description": "추천 기준 이름 (한국어)" },
+      "description": { "type": "string", "description": "기준 설명 (한국어)" },
+      "items": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 6,
+        "items": {
+          "type": "object",
+          "properties": {
+            "ticker": { "type": "string", "description": "티커. 예: \"005930.KS\", \"AAPL\", \"7203.T\"" },
+            "name": { "type": "string", "description": "종목명" },
+            "market": { "type": "string", "enum": ["KR", "US", "JP", "CN", "GLOBAL"] },
+            "sector": { "type": "string", "description": "섹터. 예: \"반도체\", \"자동차\"" },
+            "rationale": { "type": "string", "description": "추천 근거 (한국어)" },
+            "metrics": {
+              "type": "object",
+              "description": "주요 지표. 예: {\"PER\": \"8.2\", \"매출 성장률(3Y CAGR)\": \"12%\"}",
+              "additionalProperties": { "type": "string" }
+            }
+          },
+          "required": ["ticker", "name", "market", "sector", "rationale"],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": ["criterion", "description", "items"],
+    "additionalProperties": false
+  }
+}
